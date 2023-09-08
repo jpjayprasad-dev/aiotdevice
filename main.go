@@ -21,7 +21,8 @@ type Record struct {
 }
 
 type Control struct {
-	DateTime     string `csv:"datetime"`
+	DateTime     string `json:"datetime"`
+	RoomID       int    `json:"room_id"`
 	DeviceID     string `json:"device_id"`
 	ControlPoint string `json:"controlpoint"`
 	Value        string `json:"value"`
@@ -44,6 +45,7 @@ func main() {
 	input_file := viper.GetString("room.infile")
 	output_file := viper.GetString("room.outfile")
 	port := viper.GetString("room.port")
+	room_id := viper.GetString("room.id")
 
 	records, err := ReadCsv(input_file)
 	if err != nil {
@@ -51,9 +53,8 @@ func main() {
 	}
 
 	r := gin.Default()
-	//api := r.Group("/api")
 
-	r.GET("/:device_id", func(c *gin.Context) {
+	r.GET("/:device_id/data", func(c *gin.Context) {
 		device_id := c.Param("device_id")
 		var record_to_send Record
 		for i, record := range records {
@@ -65,11 +66,12 @@ func main() {
 			}
 		}
 
-		fmt.Println(record_to_send)
 		c.JSON(200, gin.H{
 			"datetime":  record_to_send.DateTime,
 			"datapoint": record_to_send.DataPoint,
 			"value":     record_to_send.Value,
+			"device_id": device_id,
+			"room_id":   room_id,
 		})
 	})
 

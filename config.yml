@@ -1,8 +1,5 @@
 room:
+  id: 3
   port: "3000"
   infile: data/test.csv
   outfile: data/out.json
-  number: "201"
-  floor: "2"
-  tower: "A"
-  hotel: "Ibis"
