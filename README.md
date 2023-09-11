@@ -3,6 +3,13 @@
 This is a golang application which mocks data points that simulate the IoT sensors. These simulators will read data from the provided CSV file and make them available via an HTTP API.
 Also the application allows receiving controls to the controllers of IoT devices via HTTP POST.
 
+## Setup
+
+1. Install go
+2. Clone this git repo.
+```
+git clone https://github.com/jpjayprasad-dev/aiotdevice/
+```
 ## Application Specs
 
 Our objective is to build a light weight go lang app which mocks the behaviour of IoT sensors or devices installed in the room.
@@ -18,11 +25,8 @@ room:
   outfile: <path to store the control data recieved>
 ```
 ## Build Service
-1. Clone this git repo.
-```
-git clone https://github.com/jpjayprasad-dev/aiotdevice/
-```
-2. Build go application
+
+1. Build go application
 ```
 go build
 ```
