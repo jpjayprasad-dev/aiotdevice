@@ -1,4 +1,4 @@
-# AIOT Sensor/Device
+# AIOT Sensor/Device Simulation
 
 This is a golang application which mocks data points that simulate the IoT sensors. These simulators will read data from the provided CSV file and make them available via an HTTP API.
 Also the application allows receiving controls to the controllers of IoT devices via HTTP POST.
